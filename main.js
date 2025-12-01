@@ -5,10 +5,24 @@ const path = require('node:path')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 1000,
+    x: 0,
+    y: 0,
+    minHeight: 500,
+    minWidth: 500,
+    //resizable: false,
+    //movable: false,
+    //minimizable: false,
+    //closable: false,
+    //fullscreen: true,
+    title: 'Hello MM24!',
+    //frame: false,
+    //skipTaskbar: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
 
@@ -16,7 +30,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
